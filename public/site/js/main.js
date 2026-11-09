@@ -402,3 +402,31 @@ const slider = document.getElementById('slider');
 })(jQuery);
 
 
+
+// Warm the browser cache with the site's key pictures once the current page is ready,
+// so thumbnails, banners and service photos are already loaded when visitors open other pages.
+(function () {
+    var small = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+    var base = '../images/';
+    var list = [
+        'vision-eye-logo.webp', 'doctor-main.webp', 'doctor-clinic.webp',
+        'headers/header-about.webp', 'headers/header-services.webp',
+        'headers/header-video.webp', 'headers/header-contact.webp',
+        'cataractsurgery.webp', 'retinamanagement.webp', 'glaucomamanagement.webp',
+        'pediatriceyecare.webp', 'refractive.webp', 'comprehensiveeyecheckup.webp',
+        'dryeye.webp', 'minorocular.webp',
+        'achievements/apvrs2026-award-ceremony-sm.webp',
+        'achievements/apvrs2026-microsurgical-training-sm.webp'
+    ];
+    for (var i = 1; i <= 4; i++) list.push('video' + i + '-thumbnail-' + (small ? '480' : '960') + '.webp');
+    if (navigator.connection && navigator.connection.saveData) return;
+    function warm() {
+        list.forEach(function (src) { var img = new Image(); img.decoding = 'async'; img.src = base + src; });
+    }
+    function schedule() {
+        if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 1500 });
+        else setTimeout(warm, 300);
+    }
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule);
+})();

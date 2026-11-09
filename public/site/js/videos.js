@@ -60,7 +60,7 @@
     el.addEventListener('prepare-video', prepare, { once: true });
     el.addEventListener('pointerenter', prepare, { once: true });
     el.addEventListener('focus', prepare, { once: true });
-    if (observer && !(navigator.connection && navigator.connection.saveData)) observer.observe(el);
+    el.addEventListener('touchstart', prepare, { once: true, passive: true });
     el.addEventListener('pointerenter', warmConnections, { once: true });
     el.addEventListener('focus', warmConnections, { once: true });
     el.addEventListener('touchstart', warmConnections, { once: true, passive: true });
