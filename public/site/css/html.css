@@ -2810,3 +2810,29 @@
     .svc-showcase .serrr15 > div .serrr13{margin:0 20px 18px;}
 }
 .svc-showcase .serrr15 > div .serrr13 span{letter-spacing:.09em;}
+
+/* ============ Page header banners (AI images) ============ */
+.page-header{
+    background-color:#0b2a5c;
+    background-size:cover !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    min-height:300px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+}
+.page-header--about{background-image:url(../images/headers/header-about.jpg) !important;}
+.page-header--services{background-image:url(../images/headers/header-services.jpg) !important;}
+.page-header--video{background-image:url(../images/headers/header-video.jpg) !important;}
+.page-header--contact{background-image:url(../images/headers/header-contact.jpg) !important;}
+.page-header::before{
+    background:
+        linear-gradient(90deg,rgba(6,24,60,.55) 0%,rgba(4,60,150,.55) 50%,rgba(6,24,60,.55) 100%),
+        linear-gradient(180deg,rgba(6,24,60,.15) 0%,rgba(6,24,60,.55) 100%) !important;
+}
+.page-header h1{text-shadow:0 6px 30px rgba(0,0,0,.35);}
+.page-header .container{width:100%;}
+@media (max-width:575px){
+    .page-header{min-height:200px;background-position:center center !important;}
+}
