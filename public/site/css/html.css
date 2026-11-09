@@ -2822,10 +2822,10 @@
     align-items:center;
     overflow:hidden;
 }
-.page-header--about{background-image:url(../images/headers/header-about.jpg) !important;}
-.page-header--services{background-image:url(../images/headers/header-services.jpg) !important;}
-.page-header--video{background-image:url(../images/headers/header-video.jpg) !important;}
-.page-header--contact{background-image:url(../images/headers/header-contact.jpg) !important;}
+.page-header--about{background-image:url(../images/headers/header-about.webp) !important;}
+.page-header--services{background-image:url(../images/headers/header-services.webp) !important;}
+.page-header--video{background-image:url(../images/headers/header-video.webp) !important;}
+.page-header--contact{background-image:url(../images/headers/header-contact.webp) !important;}
 .page-header::before{
     background:
         linear-gradient(90deg,rgba(6,24,60,.55) 0%,rgba(4,60,150,.55) 50%,rgba(6,24,60,.55) 100%),
