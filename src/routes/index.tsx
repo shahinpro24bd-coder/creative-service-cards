@@ -1,23 +1,38 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { useEffect } from "react";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+// The real website is a static HTML site served from public/site.
+const SITE_HOME = "/site/html/index.html";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Dr. Md. Afzal Mahfuzullah | Vitreo-Retina Specialist & Phaco Surgeon" },
+      {
+        name: "description",
+        content:
+          "Vitreo-Retina Specialist & Phaco Surgeon in Dhaka — cataract surgery, retina, glaucoma, pediatric eye care and comprehensive eye checkups.",
+      },
+      { property: "og:title", content: "Dr. Md. Afzal Mahfuzullah | Vitreo-Retina Specialist" },
+      {
+        property: "og:description",
+        content: "Expert eye care at Vision Eye Hospital, Green Road, Dhaka.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  beforeLoad: () => {
+    if (typeof window === "undefined") {
+      throw redirect({ href: SITE_HOME, statusCode: 302 });
+    }
+  },
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  useEffect(() => {
+    window.location.replace(SITE_HOME);
+  }, []);
+  return null;
 }

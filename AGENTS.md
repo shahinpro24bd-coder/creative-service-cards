@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project structure
+- The actual website is a static HTML/CSS/JS site in `public/site/` (pages in `public/site/html/`); `/` only redirects there. Why: the user maintains it as a plain HTML site and downloads it as a ZIP.
